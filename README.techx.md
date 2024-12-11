@@ -5,8 +5,7 @@ A set of unfortunate circumstances requires us to fork the Langfuse Helm charts 
 
 ## Issue Details
 - Langfuse requires a `NEXTAUTH_SECRET` environment variable which is used for session encryption.
-- Langfuse provides a value of `changeme` in their defalut `values.yaml` file.
-- In the Langfuse Helm charts, this is accomplished by setting `langfuse.nextauth.secret` in the Helm values file.
+- In the Langfuse Helm charts, this is accomplished by setting `langfuse.nextauth.secret` in the Helm values file (Langfuse provides a value of `changeme` in their default `values.yaml` file).
   - If set...
     - The Langfuse charts will create a [Kubernetes Secret](/charts/langfuse/templates/nextauth-secret.yaml).
     - The secret value will be populated with the value from `langfuse.nextauth.secret`in the values file.
