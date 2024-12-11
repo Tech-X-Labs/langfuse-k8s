@@ -1,4 +1,4 @@
-# Tech X Labs for of Langfuse Helm Charts
+# Tech X Labs fork of Langfuse Helm Charts
 
 ## Overview
 A set of unfortunate circumstances requires us to fork the Langfuse Helm charts in order to properly support secret management within our charts.
