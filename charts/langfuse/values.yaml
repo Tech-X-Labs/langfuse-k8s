@@ -16,7 +16,7 @@ langfuse:
     healthcheckBasePath: ""
   nextauth:
     url: http://localhost:3000
-    secret: changeme
+    secret: null
   salt: changeme
   telemetryEnabled: True
   nextPublicSignUpDisabled: False
