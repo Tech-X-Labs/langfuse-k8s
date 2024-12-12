@@ -116,7 +116,7 @@ entries:
     - https://github.com/langfuse/langfuse-k8s
     type: application
     urls:
-    - https://github.com/langfuse/langfuse-k8s/releases/download/langfuse-0.8.0/langfuse-0.8.0.tgz
+    - https://github.com/Tech-X-Labs/langfuse-k8s/releases/download/langfuse-0.8.0-defaultvalues/langfuse-0.8.0.tgz
     version: 0.8.0
   - apiVersion: v2
     appVersion: "2"
