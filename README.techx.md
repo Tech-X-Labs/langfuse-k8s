@@ -35,15 +35,12 @@ Distributing a new package happens in two parts: packaging the release and makin
 1. Attach the package tarball to the Github release (e.g. `langfuse-0.x.0.tgz`). This name will correspond to the `<name>-<version>.tgz` from `Chart.yaml`.
 
 ### Updating the Helm repository index
-When using a Helm dependency, the repository must point to an `index.yaml` file that contains information about the releases and chart packages. That file is served on a Github page within this project located at [`/docs`](/docs).
+When using a Helm dependency, the repository must point to an `index.yaml` file that contains information about the releases and chart packages. That file is served on a Github page within this project located in its own [`github-pages`](https://github.com/Tech-X-Labs/langfuse-k8s/tree/github-pages) branch. This branch is set up to track the [`langfuse/langfuse-k8s`](https://langfuse.github.io/langfuse-k8s/index.yaml) GitHub page, and we modify it to have references to our packages for versions we have updated.
 
-The [`index.yaml`](/docs/index.yaml) file contains references to _all_ releases, so when you're adding a new release, make sure you're just adding the new information, not replacing previous references.
-
-1. Generate a new index for the branch by running `helm repo index <dir> --url=https://github.com/Tech-X-Labs/langfuse-k8s/releases/download/<release name>`.
-2. Verify that you can download the file at `https://github.com/Tech-X-Labs/langfuse-k8s/releases/download/<release name>/<name>-<version>.tgz`
-3. Add the new release to [`/index.yaml`](/docs/index.yaml). This will be a new [`- apiVersion: vN`](/docs/index.yaml#L4) section and its child nodes under `entries.langfuse`.
-4. Review, commit, and push this index. 
-5. Ensure that [Github Pages is configured](https://github.com/Tech-X-Labs/langfuse-k8s/settings/pages) to point to the branch where these changes are made, or main if so configured.
+1. After you have created the release and attached the Switch to the `github-pages` branch, copy the link to the tarball from the release.
+1. Switch to the `github-pages` branch (should only contain `index.yaml`)
+1. Modify `index.yaml` for the specific version (e.g. `0.8.0`) to reference our image, verify the link works.
+1. Commit to the branch (don't ever merge this to `main`)
 
 ## Reference Chart as Dependency
 Reference the forked chart instead of Langfuse directly. For example:
@@ -55,6 +52,6 @@ type: application
 version: 0.0.1
 dependencies:
   - name: langfuse
-    version: 0.x.0
+    version: 0.x.0 # Make sure you're referencing a version that we have modified
     repository: https://langfuse.github.io/langfuse-k8s
 ```
