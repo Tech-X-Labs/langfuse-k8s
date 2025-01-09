@@ -54,7 +54,6 @@ tags.datadoghq.com/version: {{ .Values.versionTag }}
 Selector labels
 */}}
 {{- define "langfuse.selectorLabels" -}}
-app: {{ include "langfuse.name" . }}
 app.kubernetes.io/name: {{ include "langfuse.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}

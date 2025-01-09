@@ -37,8 +37,6 @@ Every deployment in a managed Kubernetes cluster is required to have certain lab
 
 The default values for these fields should be overwritten in values files.
 
-As part of this change, a selector label is also added. The selector label `app` is added to the `_helpers.tpl` file, and its value is set to the Chart name.
-
 ## Updating packages and Helm repository index
 Distributing a new package happens in two parts: packaging the release and making it available in a Helm repository index.
 
