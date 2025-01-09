@@ -9,13 +9,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-cmdbBusinessSvcId: ""
-dataClass: 4
-versionTag: ""
-snowGroup: ""
-pdService: ""
-ddEnv: ""
-
 langfuse:
   port: 3000
   nodeEnv: production
