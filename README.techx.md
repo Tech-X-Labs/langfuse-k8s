@@ -23,6 +23,22 @@ A set of unfortunate circumstances requires us to fork the Langfuse Helm charts 
 ## Solution
 There are two solutions. First, clone the Langfuse Helm charts into our repositories and modify them. This is simpler, but keeps us from being able to benefit from upstream changes. The second is to fork the Langfuse Helm charts, set the default `langfuse.nextauth.secret` value to `null`, package, and use as our dependency instead of directly from Langfuse.
 
+## Required Labels
+Every deployment in a managed Kubernetes cluster is required to have certain labels. These labels are typically added within the `_helpers.tpl` file. In order to avoid overwriting any part of the LangFuse Helm chart, the `_helpers.tpl` file has been updated in this repository, to include the following required labels for the LangFuse deployment:
+
+`cmdb_bus_svc_id`, set with `cmdbBusinessSvcId` in the values file.
+`data_class`, set with `dataClass` in the values file.
+`version`, set with `versionTag` in the values file.
+`snow_group`, set with `snowGroup` in the values file.
+`pd_service`, set with `pdService` in the values file.
+`tags.datadoghq.com/env`, set with `ddEnv` in the values file.
+`tags.datadoghq.com/service`, set with Chart name.
+`tags.datadoghq.com/version`, set with `versionTag` in the values file.
+
+The default values for these fields should be overwritten in values files.
+
+As part of this change, a selector label is also added. The selector label `app` is added to the `_helpers.tpl` file, and its value is set to the Chart name.
+
 ## Updating packages and Helm repository index
 Distributing a new package happens in two parts: packaging the release and making it available in a Helm repository index.
 
