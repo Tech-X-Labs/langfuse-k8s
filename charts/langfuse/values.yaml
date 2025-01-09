@@ -5,6 +5,13 @@ image:
   pullPolicy: Always
   tag: "2"
 
+cmdbBusinessSvcId: ""
+dataClass: 4
+versionTag: ""
+snowGroup: ""
+pdService: ""
+ddEnv: ""
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
