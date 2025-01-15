@@ -38,16 +38,19 @@ helm.sh/chart: {{ include "langfuse.chart" . }}
 {{ include "langfuse.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+version: {{ .Chart.AppVersion | quote }}
+tags.datadoghq.com/version: {{ .Chart.AppVersion | quote }}
+{{- else}}
+version: {{ .Values.versionTag }}
+tags.datadoghq.com/version: {{ .Values.versionTag }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 cmdb_bus_svc_id: {{ .Values.cmdbBusinessSvcId }}
 data_class: {{ .Values.dataClass | quote }}
-version: {{ .Values.versionTag }}
 snow_group: {{ .Values.snowGroup }}
 pd_service: {{ .Values.pdService }}
 tags.datadoghq.com/env: {{ .Values.ddEnv }}
 tags.datadoghq.com/service: {{ include "langfuse.name" . }}
-tags.datadoghq.com/version: {{ .Values.versionTag }}
 {{- end }}
 
 {{/*
