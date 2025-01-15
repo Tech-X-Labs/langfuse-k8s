@@ -27,13 +27,20 @@ There are two solutions. First, clone the Langfuse Helm charts into our reposito
 Every deployment in a managed Kubernetes cluster is required to have certain labels. These labels are typically added within the `_helpers.tpl` file. In order to avoid overwriting any part of the LangFuse Helm chart, the `_helpers.tpl` file has been updated in this repository, to include the following required labels for the LangFuse deployment:
 
 `cmdb_bus_svc_id`, set with `cmdbBusinessSvcId` in the values file.
+
 `data_class`, set with `dataClass` in the values file.
-`version`, set with `versionTag` in the values file.
+
+`version`, set with `Chart.AppVersion` if it exists, and otherwise with `versionTag` in the values file.
+
 `snow_group`, set with `snowGroup` in the values file.
+
 `pd_service`, set with `pdService` in the values file.
+
 `tags.datadoghq.com/env`, set with `ddEnv` in the values file.
+
 `tags.datadoghq.com/service`, set with Chart name.
-`tags.datadoghq.com/version`, set with `versionTag` in the values file.
+
+`tags.datadoghq.com/version`, set with `Chart.AppVersion` if it exists, and otherwise with `versionTag` in the values file.
 
 The default values for these fields should be overwritten in values files.
 
